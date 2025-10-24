@@ -4,6 +4,10 @@ import { Box2 } from 'vecks'
  * Transform the bounding box and the SVG element by the given
  * transforms. The <g> element are created in reverse transform
  * order and the bounding box in the given order.
+ * @param {Box2} bbox - The bounding box to transform
+ * @param {string} element - The SVG element to transform
+ * @param {Array<Object>} transforms - Array of transform objects
+ * @returns {{bbox: Box2, element: string}} Transformed bounding box and element
  */
 export default (bbox, element, transforms) => {
   let transformedElement = ''

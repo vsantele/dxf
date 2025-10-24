@@ -1,5 +1,10 @@
 import logger from '../util/logger'
 
+/**
+ * Parse line type from tuples
+ * @param {Array<[number, any]>} tuples - Array of [type, value] tuples
+ * @returns {Object} Line type object
+ */
 const ltypeHandler = (tuples) => {
   let element = null
   let offset = null
@@ -296,6 +301,11 @@ const tableHandler = (tuples, tableType, handler) => {
   }, {})
 }
 
+/**
+ * Parse TABLES section from DXF tuples
+ * @param {Array<[number, any]>} tuples - Array of [type, value] tuples
+ * @returns {import('../types').Tables} Tables object containing layers, styles, and ltypes
+ */
 export default (tuples) => {
   const tableGroups = []
   let tableTuples

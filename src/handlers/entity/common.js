@@ -1,3 +1,9 @@
+/**
+ * Parse common entity properties based on DXF group codes
+ * @param {number} type - The DXF group code
+ * @param {any} value - The value for the group code
+ * @returns {Object} Object containing parsed property or empty object
+ */
 export default (type, value) => {
   switch (type) {
     case 5: {

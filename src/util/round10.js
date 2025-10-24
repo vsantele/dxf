@@ -4,6 +4,12 @@
 // example code was added:
 // https://developer.mozilla.org/en-US/docs/MDN/About
 
+/**
+ * Round a number to a specific decimal place
+ * @param {number} value - The value to round
+ * @param {number} exp - The exponent (number of decimal places)
+ * @returns {number} The rounded value
+ */
 export default (value, exp) => {
   // If the exp is undefined or zero...
   if (typeof exp === 'undefined' || +exp === 0) {

@@ -1,7 +1,16 @@
 import common from './common'
 
+/**
+ * Type constant for LINE entity
+ * @type {string}
+ */
 export const TYPE = 'LINE'
 
+/**
+ * Process LINE entity tuples
+ * @param {Array<[number, any]>} tuples - Array of [type, value] tuples
+ * @returns {import('../types').LineEntity} Processed LINE entity
+ */
 export const process = (tuples) => {
   return tuples.reduce(
     (entity, tuple) => {

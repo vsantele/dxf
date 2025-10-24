@@ -1,3 +1,7 @@
+/**
+ * DXF color palette mapping color indices to RGB values
+ * @type {import('../types').RGBColor[]}
+ */
 export default [
   [0, 0, 0],
   [255, 0, 0],

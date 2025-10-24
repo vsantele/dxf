@@ -1,7 +1,16 @@
 import common from './common'
 
+/**
+ * Type constant for INSERT entity
+ * @type {string}
+ */
 export const TYPE = 'INSERT'
 
+/**
+ * Process INSERT entity tuples
+ * @param {Array<[number, any]>} tuples - Array of [type, value] tuples
+ * @returns {Object} Processed INSERT entity
+ */
 export const process = (tuples) => {
   return tuples.reduce(
     (entity, tuple) => {

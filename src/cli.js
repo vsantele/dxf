@@ -1,4 +1,7 @@
 #!/usr/bin/env node
+/**
+ * @file Command-line utility for converting DXF files to SVG
+ */
 import commander from 'commander'
 import fs from 'fs'
 

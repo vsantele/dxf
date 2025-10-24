@@ -1,3 +1,8 @@
+/**
+ * Parse HEADER section from DXF tuples
+ * @param {Array<[number, any]>} tuples - Array of [type, value] tuples
+ * @returns {import('../types').Header} Header object with DXF variables
+ */
 export default (tuples) => {
   let state
   const header = {}

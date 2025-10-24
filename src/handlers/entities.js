@@ -46,6 +46,11 @@ const handlers = [
   return acc
 }, {})
 
+/**
+ * Parse ENTITIES section from DXF tuples
+ * @param {Array<[number, any]>} tuples - Array of [type, value] tuples
+ * @returns {import('../types').Entity[]} Array of parsed entity objects
+ */
 export default (tuples) => {
   const entities = []
   const entityGroups = []

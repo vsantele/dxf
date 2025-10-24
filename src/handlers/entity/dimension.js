@@ -1,7 +1,16 @@
 import common from './common'
 
+/**
+ * Type constant for DIMENSION entity
+ * @type {string}
+ */
 export const TYPE = 'DIMENSION'
 
+/**
+ * Process DIMENSION entity tuples
+ * @param {Array<[number, any]>} tuples - Array of [type, value] tuples
+ * @returns {Object} Processed DIMENSION entity
+ */
 export const process = (tuples) => {
   return tuples.reduce(
     (entity, tuple) => {

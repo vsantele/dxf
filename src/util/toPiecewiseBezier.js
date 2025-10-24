@@ -3,6 +3,9 @@ import insertKnot from './insertKnot'
 /**
  * For a pinned spline, the knots have to be repeated k times
  * (where k is the order), at both the beginning and the end
+ * @param {number} k - Order of the B-spline
+ * @param {Array<number>} knots - Knot vector
+ * @returns {boolean} True if the spline is pinned
  */
 export const checkPinned = (k, knots) => {
   // Pinned at the start
@@ -19,6 +22,12 @@ export const checkPinned = (k, knots) => {
   }
 }
 
+/**
+ * Calculate the multiplicity of a knot
+ * @param {Array<number>} knots - Knot vector
+ * @param {number} index - Index of the knot
+ * @returns {number} Multiplicity of the knot
+ */
 export const multiplicity = (knots, index) => {
   let m = 1
   for (let i = index + 1; i < knots.length; ++i) {
@@ -53,6 +62,13 @@ export const computeInsertions = (k, knots) => {
   return inserts
 }
 
+/**
+ * Convert a B-spline to piecewise Bezier representation
+ * @param {number} k - Order of the B-spline
+ * @param {Array} controlPoints - Control points
+ * @param {Array<number>} knots - Knot vector
+ * @returns {{controlPoints: Array, knots: Array<number>}} Piecewise Bezier representation
+ */
 export default (k, controlPoints, knots) => {
   checkPinned(k, knots)
   const insertions = computeInsertions(k, knots)

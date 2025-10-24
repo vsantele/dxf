@@ -1,8 +1,8 @@
 /**
- * Rotate a points by the given angle.
- *
- * @param points the points
- * @param angle the rotation angle
+ * Rotate a point by the given angle.
+ * @param {{x: number, y: number}} p - The point to rotate
+ * @param {number} angle - The rotation angle in radians
+ * @returns {{x: number, y: number}} The rotated point
  */
 export default (p, angle) => {
   return {

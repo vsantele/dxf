@@ -2,8 +2,17 @@ import common from './common'
 import { assign as assignMTEXT } from './mtext'
 import { assign as assignTEXT } from './text'
 
+/**
+ * Type constant for ATTDEF entity
+ * @type {string}
+ */
 export const TYPE = 'ATTDEF'
 
+/**
+ * Process ATTDEF entity tuples
+ * @param {Array<[number, any]>} tuples - Array of [type, value] tuples
+ * @returns {Object} Processed ATTDEF entity
+ */
 export const process = (tuples) => {
   return tuples.reduce(
     (entity, tuple) => {

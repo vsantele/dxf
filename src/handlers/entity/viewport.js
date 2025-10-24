@@ -1,7 +1,16 @@
 import common from './common'
 
+/**
+ * Type constant for VIEWPORT entity
+ * @type {string}
+ */
 export const TYPE = 'VIEWPORT'
 
+/**
+ * Process VIEWPORT entity tuples
+ * @param {Array<[number, any]>} tuples - Array of [type, value] tuples
+ * @returns {Object} Processed VIEWPORT entity
+ */
 export const process = (tuples) => {
   return tuples.reduce(
     (entity, tuple) => {
