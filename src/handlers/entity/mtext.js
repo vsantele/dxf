@@ -1,7 +1,15 @@
 import common from './common'
 
+/**
+ * Type constant for MTEXT entity
+ * @type {string}
+ */
 export const TYPE = 'MTEXT'
 
+/**
+ * Mapping of DXF codes to entity properties
+ * @type {Object}
+ */
 const simpleCodes = {
   10: 'x',
   20: 'y',
@@ -51,6 +59,11 @@ const simpleCodes = {
   50: 'columnHeights',
 }
 
+/**
+ * Process MTEXT entity tuples
+ * @param {Array<[number, any]>} tuples - Array of [type, value] tuples
+ * @returns {Object} Processed MTEXT entity
+ */
 export const process = (tuples) => {
   return tuples.reduce(
     (entity, tuple) => {

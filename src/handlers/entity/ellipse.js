@@ -1,7 +1,16 @@
 import common from './common'
 
+/**
+ * Type constant for ELLIPSE entity
+ * @type {string}
+ */
 export const TYPE = 'ELLIPSE'
 
+/**
+ * Process ELLIPSE entity tuples
+ * @param {Array<[number, any]>} tuples - Array of [type, value] tuples
+ * @returns {Object} Processed ELLIPSE entity
+ */
 export const process = (tuples) => {
   return tuples.reduce(
     (entity, tuple) => {

@@ -1,5 +1,13 @@
+/**
+ * Type constant for VERTEX entity
+ * @type {string}
+ */
 export const TYPE = 'VERTEX'
 
+/**
+ * Ensure entity has faces array
+ * @param {Object} entity - The entity to update
+ */
 const ensureFaces = (entity) => {
   entity.faces = entity.faces || []
   if ('x' in entity && !entity.x) delete entity.x
@@ -7,6 +15,11 @@ const ensureFaces = (entity) => {
   if ('z' in entity && !entity.z) delete entity.z
 }
 
+/**
+ * Process VERTEX entity tuples
+ * @param {Array<[number, any]>} tuples - Array of [type, value] tuples
+ * @returns {Object} Processed VERTEX entity
+ */
 export const process = (tuples) => {
   return tuples.reduce((entity, tuple) => {
     const type = tuple[0]

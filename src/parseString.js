@@ -5,7 +5,12 @@ import entitiesHandler from './handlers/entities'
 import objectsHandler from './handlers/objects'
 import logger from './util/logger'
 
-// Parse the value into the native representation
+/**
+ * Parse the value into the native representation
+ * @param {number} type - The DXF group code type
+ * @param {string} value - The string value to parse
+ * @returns {number|string} The parsed value (number or string)
+ */
 const parseValue = (type, value) => {
   if (type >= 10 && type < 60) {
     return parseFloat(value, 10)
@@ -18,7 +23,11 @@ const parseValue = (type, value) => {
   }
 }
 
-// Content lines are alternate lines of type and value
+/**
+ * Content lines are alternate lines of type and value
+ * @param {string[]} contentLines - Array of content lines from DXF file
+ * @returns {Array<[number, any]>} Array of [type, value] tuples
+ */
 const convertToTypesAndValues = (contentLines) => {
   let state = 'type'
   let type
@@ -35,6 +44,11 @@ const convertToTypesAndValues = (contentLines) => {
   return typesAndValues
 }
 
+/**
+ * Separate tuples into sections
+ * @param {Array<[number, any]>} tuples - Array of [type, value] tuples
+ * @returns {Array<Array<[number, any]>>} Array of sections, each containing tuples
+ */
 const separateSections = (tuples) => {
   let sectionTuples
   return tuples.reduce((sections, tuple) => {
@@ -50,8 +64,12 @@ const separateSections = (tuples) => {
   }, [])
 }
 
-// Each section start with the type tuple, then proceeds
-// with the contents of the section
+/**
+ * Reduce a section by processing its content tuples
+ * @param {Object} acc - The accumulator object
+ * @param {Array<[number, any]>} section - Section tuples to process
+ * @returns {Object} Updated accumulator with section data
+ */
 const reduceSection = (acc, section) => {
   const sectionType = section[0][1]
   const contentTuples = section.slice(1)
@@ -77,6 +95,11 @@ const reduceSection = (acc, section) => {
   return acc
 }
 
+/**
+ * Parse a DXF string into a structured object
+ * @param {string} string - The DXF file content as a string
+ * @returns {Object} Parsed DXF data with sections (header, tables, blocks, entities, objects)
+ */
 export default (string) => {
   const lines = string.split(/\r\n|\r|\n/g)
   const tuples = convertToTypesAndValues(lines)

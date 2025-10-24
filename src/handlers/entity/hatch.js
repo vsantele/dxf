@@ -1,5 +1,9 @@
 import common from './common'
 
+/**
+ * Type constant for HATCH entity
+ * @type {string}
+ */
 export const TYPE = 'HATCH'
 
 let status = 'IDLE'
@@ -10,6 +14,11 @@ let seed = null
 let loop = { references: [], entities: [] }
 let polyPoint = null
 
+/**
+ * Process HATCH entity tuples
+ * @param {Array<[number, any]>} tuples - Array of [type, value] tuples
+ * @returns {Object} Processed HATCH entity
+ */
 export const process = (tuples) => {
   return tuples.reduce(
     (entity, tuple) => {

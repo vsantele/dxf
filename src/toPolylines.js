@@ -6,6 +6,11 @@ import entityToPolyline from './entityToPolyline'
 import applyTransforms from './applyTransforms'
 import logger from './util/logger'
 
+/**
+ * Convert parsed DXF to polylines with color information
+ * @param {Object} parsed - The parsed DXF data
+ * @returns {{bbox: Box2, polylines: Array<{rgb: number[], layer: Object, vertices: Array<number[]>}>}} Object containing bounding box and array of polylines
+ */
 export default (parsed) => {
   const entities = denormalise(parsed)
   const polylines = entities.map((entity) => {

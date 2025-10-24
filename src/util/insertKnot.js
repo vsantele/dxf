@@ -1,8 +1,12 @@
 /**
  * Knot insertion is known as "Boehm's algorithm"
- *
  * https://math.stackexchange.com/questions/417859/convert-a-b-spline-into-bezier-curves
  * code adapted from http://preserve.mactech.com/articles/develop/issue_25/schneider.html
+ * @param {number} k - Order of the B-spline
+ * @param {Array} controlPoints - Control points
+ * @param {Array<number>} knots - Knot vector
+ * @param {number} newKnot - New knot to insert
+ * @returns {{controlPoints: Array, knots: Array<number>}} Updated control points and knots
  */
 export default (k, controlPoints, knots, newKnot) => {
   const x = knots

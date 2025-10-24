@@ -1,3 +1,8 @@
+/**
+ * @module dxf
+ * @description DXF parser for node/browser
+ */
+
 import config from './config'
 import parseString from './parseString'
 import denormalise from './denormalise'

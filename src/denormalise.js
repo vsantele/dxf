@@ -2,12 +2,23 @@ import cloneDeep from 'lodash/cloneDeep'
 
 import logger from './util/logger'
 
+/**
+ * Denormalise the parsed DXF data by applying transforms to inserted blocks
+ * @param {Object} parseResult - The parsed DXF data
+ * @returns {Array} Array of denormalised entities with transforms applied
+ */
 export default (parseResult) => {
   const blocksByName = parseResult.blocks.reduce((acc, b) => {
     acc[b.name] = b
     return acc
   }, {})
 
+  /**
+   * Recursively gather entities, expanding INSERT references
+   * @param {Array} entities - Array of entities to process
+   * @param {Array} transforms - Array of transforms to apply
+   * @returns {Array} Array of entities with transforms
+   */
   const gatherEntities = (entities, transforms) => {
     let current = []
     entities.forEach((e) => {

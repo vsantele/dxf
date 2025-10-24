@@ -1,7 +1,16 @@
 import { assign } from './attdef'
 
+/**
+ * Type constant for ATTRIB entity
+ * @type {string}
+ */
 export const TYPE = 'ATTRIB'
 
+/**
+ * Process ATTRIB entity tuples
+ * @param {Array<[number, any]>} tuples - Array of [type, value] tuples
+ * @returns {Object} Processed ATTRIB entity
+ */
 export const process = (tuples) => {
   return tuples.reduce(
     (entity, tuple) => {

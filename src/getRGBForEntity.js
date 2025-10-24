@@ -1,6 +1,12 @@
 import colors from './util/colors'
 import logger from './util/logger'
 
+/**
+ * Get RGB color array for an entity based on its color number or layer
+ * @param {Object} layers - Layer table from parsed DXF
+ * @param {Object} entity - The entity to get color for
+ * @returns {number[]} RGB color array [r, g, b]
+ */
 export default (layers, entity) => {
   const layerTable = layers[entity.layer]
   if (layerTable) {

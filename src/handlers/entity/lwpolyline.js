@@ -1,7 +1,16 @@
 import common from './common'
 
+/**
+ * Type constant for LWPOLYLINE entity
+ * @type {string}
+ */
 export const TYPE = 'LWPOLYLINE'
 
+/**
+ * Process LWPOLYLINE entity tuples
+ * @param {Array<[number, any]>} tuples - Array of [type, value] tuples
+ * @returns {Object} Processed LWPOLYLINE entity
+ */
 export const process = (tuples) => {
   let vertex
   return tuples.reduce(

@@ -3,6 +3,7 @@
   "version": "5.3.1",
   "description": "DXF parser for node/browser",
   "main": "lib/index.js",
+  "types": "types/index.d.ts",
   "bin": {
     "dxf-to-svg": "lib/cli.js"
   },
@@ -12,8 +13,9 @@
   "scripts": {
     "compile": "babel -d lib/ src/",
     "dist": "browserify lib/index.js --standalone dxf -o dist/dxf.js",
+    "generate-types": "tsc",
     "lint": "eslint src test",
-    "prepublishOnly": "npm run lint && npm run test && rimraf dist/ lib/ && npm run compile && npm run dist",
+    "prepublishOnly": "npm run lint && npm run test && rimraf dist/ lib/ types/ && npm run compile && npm run dist && npm run generate-types",
     "prettier": "prettier --write .",
     "test": "npm run test:unit",
     "test:functional": "cd test/functional && webpack-dev-server",
@@ -63,6 +65,7 @@
     "react-router-dom": "^5.3.4",
     "rimraf": "^6.0.1",
     "standard-version": "^9.5.0",
+    "typescript": "^5.9.3",
     "webpack": "^5.94.0",
     "webpack-cli": "^5.1.4",
     "webpack-dev-server": "^4.15.2",

@@ -5,6 +5,14 @@ import round10 from './round10'
  * Source:
  * https://github.com/thibauts/b-spline
  * Copyright (c) 2015 Thibaut Séguy <thibaut.seguy@gmail.com>
+ * 
+ * B-spline interpolation
+ * @param {number} t - Parameter value (0 to 1)
+ * @param {number} degree - Degree of the B-spline
+ * @param {Array} points - Control points
+ * @param {Array<number>} knots - Knot vector
+ * @param {Array<number>} weights - Weights for rational B-spline
+ * @returns {Object} Point on the B-spline curve
  */
 export default (t, degree, points, knots, weights) => {
   const n = points.length // points count

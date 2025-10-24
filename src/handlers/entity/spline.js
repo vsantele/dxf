@@ -1,7 +1,16 @@
 import common from './common'
 
+/**
+ * Type constant for SPLINE entity
+ * @type {string}
+ */
 export const TYPE = 'SPLINE'
 
+/**
+ * Process SPLINE entity tuples
+ * @param {Array<[number, any]>} tuples - Array of [type, value] tuples
+ * @returns {Object} Processed SPLINE entity
+ */
 export const process = (tuples) => {
   let controlPoint
   return tuples.reduce(

@@ -2,8 +2,12 @@ import { V2 } from 'vecks'
 
 /**
  * Create the arcs point for a LWPOLYLINE. The start and end are excluded
- *
  * See diagram.png in this directory for description of points and angles used.
+ * @param {{x: number, y: number}} from - Start point
+ * @param {{x: number, y: number}} to - End point
+ * @param {number} bulge - Bulge value
+ * @param {number} resolution - Resolution in degrees
+ * @returns {Array<number[]>} Array of arc points
  */
 export default (from, to, bulge, resolution) => {
   // Resolution in degrees

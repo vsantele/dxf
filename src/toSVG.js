@@ -9,6 +9,12 @@ import rgbToColorAttribute from './util/rgbToColorAttribute'
 import toPiecewiseBezier, { multiplicity } from './util/toPiecewiseBezier'
 import transformBoundingBoxAndElement from './util/transformBoundingBoxAndElement'
 
+/**
+ * Add horizontal flip transformation if applicable based on extrusion Z
+ * @param {Object} entity - The entity to check
+ * @param {{bbox: Box2, element: string}} bboxAndElement - Bounding box and SVG element
+ * @returns {{bbox: Box2, element: string}} Transformed bounding box and element
+ */
 const addFlipXIfApplicable = (entity, { bbox, element }) => {
   if (entity.extrusionZ === -1) {
     return {
@@ -360,6 +366,11 @@ const entityToBoundsAndElement = (entity) => {
   }
 }
 
+/**
+ * Convert parsed DXF data to SVG string
+ * @param {Object} parsed - The parsed DXF data
+ * @returns {string} SVG string representation of the DXF
+ */
 export default (parsed) => {
   const entities = denormalise(parsed)
   const { bbox, elements } = entities.reduce(

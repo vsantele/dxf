@@ -167,6 +167,9 @@ export const polyfaceOutline = (entity) => {
  * Convert a parsed DXF entity to a polyline. These can be used to render the
  * the DXF in SVG, Canvas, WebGL etc., without depending on native support
  * of primitive objects (ellispe, spline etc.)
+ * @param {Object} entity - The entity to convert
+ * @param {Object} options - Options for conversion (e.g., interpolationsPerSplineSegment)
+ * @returns {Array<number[]>} Array of [x, y] coordinate pairs
  */
 export default (entity, options) => {
   options = options || {}

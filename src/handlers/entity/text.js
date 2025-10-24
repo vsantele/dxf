@@ -1,7 +1,15 @@
 import common from './common'
 
+/**
+ * Type constant for TEXT entity
+ * @type {string}
+ */
 export const TYPE = 'TEXT'
 
+/**
+ * Mapping of DXF codes to entity properties
+ * @type {Object}
+ */
 const simpleCodes = {
   1: 'string',
   10: 'x',
@@ -23,6 +31,11 @@ const simpleCodes = {
 
 // const EXCEPTION_STRINGS = ['\\A1;', '%%u']
 
+/**
+ * Process TEXT entity tuples
+ * @param {Array<[number, any]>} tuples - Array of [type, value] tuples
+ * @returns {Object} Processed TEXT entity
+ */
 export const process = (tuples) => {
   return tuples.reduce(
     (entity, tuple) => {
@@ -40,6 +53,12 @@ export const process = (tuples) => {
   )
 }
 
+/**
+ * Assign a property to an entity based on DXF code
+ * @param {Object} entity - The entity to update
+ * @param {number} type - The DXF group code
+ * @param {any} value - The value to assign
+ */
 export const assign = (entity, type, value) => {
   if (simpleCodes[type] !== undefined) {
     entity[simpleCodes[type]] = value

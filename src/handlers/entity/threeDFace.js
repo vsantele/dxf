@@ -1,7 +1,16 @@
 import common from './common'
 
+/**
+ * Type constant for 3DFACE entity
+ * @type {string}
+ */
 export const TYPE = '3DFACE'
 
+/**
+ * Process 3DFACE entity tuples
+ * @param {Array<[number, any]>} tuples - Array of [type, value] tuples
+ * @returns {Object} Processed 3DFACE entity
+ */
 export const process = (tuples) => {
   return tuples.reduce(
     (entity, tuple) => {
