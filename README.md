@@ -21,6 +21,17 @@ At this point in time, the important geometric entities are supported, but notab
 
 and some others are **parsed**, but are **not supported for SVG rendering** (see section below on SVG rendering)
 
+## TypeScript Support
+
+The library includes TypeScript declaration files (`.d.ts`) generated from JSDoc comments. This provides type checking and IntelliSense support in TypeScript projects and editors like VS Code.
+
+```typescript
+import { Helper, parseString, toSVG } from 'dxf';
+
+const helper = new Helper(dxfString);
+const svg: string = helper.toSVG();
+```
+
 ## Getting started
 
 There is an ES5 and ES6 example in the `examples/` directory that show how to use the library. There are exposed functions for advanced users, but for the majority of users you can use the `Helper` object to get the data you're interested in (or convert to SVG):
