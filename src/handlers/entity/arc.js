@@ -9,7 +9,7 @@ export const TYPE = 'ARC'
 /**
  * Process ARC entity tuples
  * @param {Array<[number, any]>} tuples - Array of [type, value] tuples
- * @returns {Object} Processed ARC entity
+ * @returns {import('../types').ArcEntity} Processed ARC entity
  */
 export const process = (tuples) => {
   return tuples.reduce(

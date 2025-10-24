@@ -368,7 +368,7 @@ const entityToBoundsAndElement = (entity) => {
 
 /**
  * Convert parsed DXF data to SVG string
- * @param {Object} parsed - The parsed DXF data
+ * @param {import('./types').ParsedDXF} parsed - The parsed DXF data
  * @returns {string} SVG string representation of the DXF
  */
 export default (parsed) => {

@@ -4,8 +4,8 @@ import logger from './util/logger'
 
 /**
  * Denormalise the parsed DXF data by applying transforms to inserted blocks
- * @param {Object} parseResult - The parsed DXF data
- * @returns {Array} Array of denormalised entities with transforms applied
+ * @param {import('./types').ParsedDXF} parseResult - The parsed DXF data
+ * @returns {import('./types').Entity[]} Array of denormalised entities with transforms applied
  */
 export default (parseResult) => {
   const blocksByName = parseResult.blocks.reduce((acc, b) => {
@@ -15,9 +15,9 @@ export default (parseResult) => {
 
   /**
    * Recursively gather entities, expanding INSERT references
-   * @param {Array} entities - Array of entities to process
-   * @param {Array} transforms - Array of transforms to apply
-   * @returns {Array} Array of entities with transforms
+   * @param {import('./types').Entity[]} entities - Array of entities to process
+   * @param {import('./types').Transform[]} transforms - Array of transforms to apply
+   * @returns {import('./types').Entity[]} Array of entities with transforms
    */
   const gatherEntities = (entities, transforms) => {
     let current = []

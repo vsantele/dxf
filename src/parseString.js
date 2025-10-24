@@ -98,7 +98,7 @@ const reduceSection = (acc, section) => {
 /**
  * Parse a DXF string into a structured object
  * @param {string} string - The DXF file content as a string
- * @returns {Object} Parsed DXF data with sections (header, tables, blocks, entities, objects)
+ * @returns {import('./types').ParsedDXF} Parsed DXF data with sections (header, tables, blocks, entities, objects)
  */
 export default (string) => {
   const lines = string.split(/\r\n|\r|\n/g)

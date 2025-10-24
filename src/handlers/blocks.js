@@ -3,7 +3,7 @@ import entitiesHandler from './entities'
 /**
  * Parse BLOCKS section from DXF tuples
  * @param {Array<[number, any]>} tuples - Array of [type, value] tuples
- * @returns {Array} Array of block objects
+ * @returns {import('../types').Block[]} Array of block objects
  */
 export default (tuples) => {
   let state

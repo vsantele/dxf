@@ -25,7 +25,7 @@ export default class Helper {
 
   /**
    * Parse the DXF content
-   * @returns {Object} Parsed DXF data
+   * @returns {import('./types').ParsedDXF} Parsed DXF data
    */
   parse() {
     this._parsed = parseString(this._contents)
@@ -35,7 +35,7 @@ export default class Helper {
 
   /**
    * Get the parsed DXF data (parses if not already done)
-   * @returns {Object} Parsed DXF data
+   * @returns {import('./types').ParsedDXF} Parsed DXF data
    */
   get parsed() {
     if (this._parsed === null) {
@@ -46,7 +46,7 @@ export default class Helper {
 
   /**
    * Denormalise the parsed DXF data (applies transforms to blocks)
-   * @returns {Array} Array of denormalised entities
+   * @returns {import('./types').Entity[]} Array of denormalised entities
    */
   denormalise() {
     this._denormalised = denormalise(this.parsed)
@@ -56,7 +56,7 @@ export default class Helper {
 
   /**
    * Get denormalised entities (denormalises if not already done)
-   * @returns {Array} Array of denormalised entities
+   * @returns {import('./types').Entity[]} Array of denormalised entities
    */
   get denormalised() {
     if (!this._denormalised) {
@@ -74,7 +74,7 @@ export default class Helper {
 
   /**
    * Get entities grouped by layer
-   * @returns {Object} Entities grouped by layer
+   * @returns {import('./types').GroupedEntities} Entities grouped by layer
    */
   get groups() {
     if (!this._groups) {
@@ -93,7 +93,7 @@ export default class Helper {
 
   /**
    * Convert entities to polylines for rendering
-   * @returns {Array} Array of polylines with color information
+   * @returns {import('./types').PolylinesResult} Result with bounding box and array of polylines with color information
    */
   toPolylines() {
     return toPolylines(this.parsed)

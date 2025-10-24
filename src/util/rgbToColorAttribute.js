@@ -1,7 +1,7 @@
 /**
  * Convert an RGB array to a CSS string definition.
  * Converts white lines to black as the default.
- * @param {number[]} rgb - RGB color array [r, g, b]
+ * @param {import('../types').RGBColor} rgb - RGB color array [r, g, b]
  * @returns {string} CSS rgb() string
  */
 export default (rgb) => {

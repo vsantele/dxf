@@ -9,7 +9,7 @@ export const TYPE = 'LINE'
 /**
  * Process LINE entity tuples
  * @param {Array<[number, any]>} tuples - Array of [type, value] tuples
- * @returns {Object} Processed LINE entity
+ * @returns {import('../types').LineEntity} Processed LINE entity
  */
 export const process = (tuples) => {
   return tuples.reduce(

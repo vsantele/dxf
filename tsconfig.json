@@ -30,10 +30,10 @@
     "jsx": "react",
     // Set the root directory
     "rootDir": "./src",
-    // Include node types
-    "types": ["node"],
     // ESM interop
-    "esModuleInterop": true
+    "esModuleInterop": true,
+    // Lib support
+    "lib": ["ES2017", "DOM"]
   },
   "include": [
     "src/**/*"

@@ -1,7 +1,7 @@
 /**
  * Parse OBJECTS section from DXF tuples
  * @param {Array<[number, any]>} tuples - Array of [type, value] tuples
- * @returns {Object} Objects section data including layouts
+ * @returns {import('../types').Objects} Objects section data including layouts
  */
 export default (tuples) => {
   let state

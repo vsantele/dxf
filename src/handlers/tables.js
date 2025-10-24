@@ -304,7 +304,7 @@ const tableHandler = (tuples, tableType, handler) => {
 /**
  * Parse TABLES section from DXF tuples
  * @param {Array<[number, any]>} tuples - Array of [type, value] tuples
- * @returns {Object} Tables object containing layers, styles, and ltypes
+ * @returns {import('../types').Tables} Tables object containing layers, styles, and ltypes
  */
 export default (tuples) => {
   const tableGroups = []

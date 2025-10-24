@@ -1,6 +1,6 @@
 /**
  * DXF color palette mapping color indices to RGB values
- * @type {Array<number[]>}
+ * @type {import('../types').RGBColor[]}
  */
 export default [
   [0, 0, 0],

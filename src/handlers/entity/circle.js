@@ -9,7 +9,7 @@ export const TYPE = 'CIRCLE'
 /**
  * Process CIRCLE entity tuples
  * @param {Array<[number, any]>} tuples - Array of [type, value] tuples
- * @returns {Object} Processed CIRCLE entity
+ * @returns {import('../types').CircleEntity} Processed CIRCLE entity
  */
 export const process = (tuples) => {
   return tuples.reduce(
