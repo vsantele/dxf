@@ -5,6 +5,14 @@
     "incompleteTypes": true,
     "missingProperties": true,
     "noImplicitAny": true,
-    "noImplicitThis": true
+    "noImplicitThis": true,
+    "strictNonNullAssertions": true
+  },
+  "types": {
+    "strictNullChecks": true,
+    "matching": {
+      "position|point|coordinate": "GeoJSON.Position",
+      "geometry": "GeoJSON.Geometry"
+    }
   }
 }

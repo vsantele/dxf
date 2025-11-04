@@ -31,7 +31,7 @@ export default (parsed: { tables: { layers: { [x: string]: any } } }) => {
 
   const bbox = new Box2()
   polylines.forEach((polyline) => {
-    polyline.vertices.forEach((vertex: any[]) => {
+    polyline.vertices.forEach((vertex: number[]) => {
       bbox.expandByPoint({ x: vertex[0], y: vertex[1] })
     })
   })

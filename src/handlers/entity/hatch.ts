@@ -12,7 +12,7 @@ let polyPoint = null
 
 export const process = (tuples: any[]) => {
   return tuples.reduce(
-    (entity: { patternName: any; elevation: { x: number; y: number; z: number }; seeds: { seeds: { x: number; y: number }[]; count: number }; fillColor: any; fillType: string; extrusionDir: { x: number; y: number; z: number }; boundary: { count: number; loops: { references: any[]; entities: any[] }[] }; style: number; hatchType: number; shadowPatternAngle: number; spacing: number; double: boolean; pattern: { lineCount: number; angle: number; x: number; y: number; offsetX: number; offsetY: number; dashCount: number; length: any[] }; solidOrGradient: string; color: { count: number; rotation: any; gradient: any; tint: any } }, tuple: any[]) => {
+    (entity: { patternName: any; elevation: { x: number; y: number; z: number }; seeds: { seeds: { x: number; y: number }[]; count: number }; fillColor: any; fillType: string; extrusionDir: { x: number; y: number; z: number }; boundary: { count: number; loops: { references: never[]; entities: never[] }[] }; style: number; hatchType: number; shadowPatternAngle: number; spacing: number; double: boolean; pattern: { lineCount: number; angle: number; x: number; y: number; offsetX: number; offsetY: number; dashCount: number; length: any[] }; solidOrGradient: string; color: { count: number; rotation: any; gradient: any; tint: any } }, tuple: any[]) => {
       const type = tuple[0]
       const value = tuple[1]
 

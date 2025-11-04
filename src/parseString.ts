@@ -6,7 +6,7 @@ import objectsHandler from './handlers/objects'
 import logger from './util/logger'
 
 // Parse the value into the native representation
-const parseValue = (type: number, value: string) => {
+const parseValue = (type: number | undefined, value: string) => {
   if (type >= 10 && type < 60) {
     return parseFloat(value, 10)
   } else if (type >= 210 && type < 240) {
@@ -52,7 +52,7 @@ const separateSections = (tuples: any[]) => {
 
 // Each section start with the type tuple, then proceeds
 // with the contents of the section
-const reduceSection = (acc: { header: {}; tables: { layers: {}; styles: {}; vports: {}; ltypes: {} }; blocks: {}[]; entities: any[]; objects: { layouts: any[] } }, section: string | any[]) => {
+const reduceSection = (acc: { header: {}; tables: { layers: {}; styles: {}; vports: {}; ltypes: {} }; blocks: {}[]; entities: any[]; objects: { layouts: never[] } }, section: string | any[]) => {
   const sectionType = section[0][1]
   const contentTuples = section.slice(1)
   switch (sectionType) {

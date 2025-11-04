@@ -33,7 +33,7 @@ private _groups: any
   }
 
   denormalise() {
-    this._denormalised = denormalise(this.parsed)
+    this._denormalised = denormalise(this.parsed!)
     logger.info('denormalised:', this._denormalised)
     return this._denormalised
   }
@@ -46,7 +46,7 @@ private _groups: any
   }
 
   group() {
-    this._groups = groupEntitiesByLayer(this.denormalised)
+    this._groups = groupEntitiesByLayer(this.denormalised!)
   }
 
   get groups() {
@@ -61,6 +61,6 @@ private _groups: any
   }
 
   toPolylines() {
-    return toPolylines(this.parsed)
+    return toPolylines(this.parsed!)
   }
 }

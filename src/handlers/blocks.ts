@@ -4,7 +4,7 @@ export default (tuples: any[]) => {
   let state
   const blocks: {}[] = []
   let block
-  let entitiesTuples: any[] = []
+  let entitiesTuples: any[] | undefined = []
 
   tuples.forEach((tuple: any[]) => {
     const type = tuple[0]
@@ -17,7 +17,7 @@ export default (tuples: any[]) => {
       blocks.push(block)
     } else if (value === 'ENDBLK') {
       if (state === 'entities') {
-        block.entities = entitiesHandler(entitiesTuples)
+        block.entities = entitiesHandler(entitiesTuples!)
       } else {
         block.entities = []
       }
@@ -53,9 +53,9 @@ export default (tuples: any[]) => {
       }
     } else if (state === 'block' && type === 0) {
       state = 'entities'
-      entitiesTuples.push(tuple)
+      entitiesTuples!.push(tuple)
     } else if (state === 'entities') {
-      entitiesTuples.push(tuple)
+      entitiesTuples!.push(tuple)
     }
   })
 

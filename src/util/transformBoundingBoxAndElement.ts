@@ -5,9 +5,9 @@ import { Box2 } from 'vecks'
  * transforms. The <g> element are created in reverse transform
  * order and the bounding box in the given order.
  */
-export default (bbox: { valid: any; min: { x: any; y: any }; max: { x: any; y: any } }, element: string, transforms: any[]) => {
+export default (bbox, element, transforms) => {
   let transformedElement = ''
-  const matrices = transforms.map((transform: { x: number; y: number; scaleX: number; scaleY: number; rotation: any; extrusionZ: number }) => {
+  const matrices = transforms.map((transform) => {
     // Create the transformation matrix
     const tx = transform.x || 0
     const ty = transform.y || 0

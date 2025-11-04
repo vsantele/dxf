@@ -26,7 +26,7 @@ const rotate = (points: any[], angle: number) => {
  * @param start start angle in radians
  * @param start end angle in radians
  */
-const interpolateEllipse = (cx: number, cy: number, rx: number, ry: number, start: number, end: number, rotationAngle: number) => {
+const interpolateEllipse = (cx: number, cy: number, rx: number, ry: number, start: number, end: number, rotationAngle: number | undefined) => {
   if (end < start) {
     end += Math.PI * 2
   }
@@ -106,7 +106,7 @@ export const interpolateBSpline = (
 
 export const polyfaceOutline = (entity: { vertices: any }) => {
   const vertices: ({ x: any; y: any; })[] = []
-  const faces: ({ indices: any[]; hiddens: any[]; })[] = []
+  const faces: ({ indices: never[]; hiddens: never[]; })[] = []
 
   for (const v of entity.vertices) {
     if (v.faces) {

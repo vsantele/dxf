@@ -1,6 +1,6 @@
 export const TYPE = 'VERTEX'
 
-const ensureFaces = (entity: { faces: any[]; x: any; y: any; z: any }) => {
+const ensureFaces = (entity: { faces: never[]; x: any; y: any; z: any }) => {
   entity.faces = entity.faces || []
   if ('x' in entity && !entity.x) delete entity.x
   if ('y' in entity && !entity.y) delete entity.y

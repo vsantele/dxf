@@ -9,7 +9,7 @@ import rgbToColorAttribute from './util/rgbToColorAttribute'
 import toPiecewiseBezier, { multiplicity } from './util/toPiecewiseBezier'
 import transformBoundingBoxAndElement from './util/transformBoundingBoxAndElement'
 
-const addFlipXIfApplicable = (entity: { extrusionZ: number }, { bbox, element }: { bbox: any; element: string }) => {
+const addFlipXIfApplicable = (entity, { bbox, element }) => {
   if (entity.extrusionZ === -1) {
     return {
       bbox: new Box2()
@@ -27,7 +27,7 @@ const addFlipXIfApplicable = (entity: { extrusionZ: number }, { bbox, element }:
 /**
  * Create a <path /> element. Interpolates curved entities.
  */
-const polyline = (entity: { transforms: any[] }) => {
+const polyline = (entity) => {
   const vertices = entityToPolyline(entity)
   const bbox = vertices.reduce(
     (acc, [x, y]) => acc.expandByPoint({ x, y }),
@@ -50,7 +50,7 @@ const polyline = (entity: { transforms: any[] }) => {
  * Create a <path /> element. Interpolates curved entities.
  * lwpolyline is the same as polyline but addFlipXIfApplicable does apply
  */
-const lwpolyline = (entity: { transforms: any[] }) => {
+const lwpolyline = (entity) => {
   const vertices = entityToPolyline(entity)
   const bbox0 = vertices.reduce(
     (acc, [x, y]) => acc.expandByPoint({ x, y }),
@@ -77,7 +77,7 @@ const lwpolyline = (entity: { transforms: any[] }) => {
 /**
  * Create a <circle /> element for the CIRCLE entity.
  */
-const circle = (entity: { x: number; r: number; y: number; transforms: any[] }) => {
+const circle = (entity) => {
   const bbox0 = new Box2()
     .expandByPoint({
       x: entity.x + entity.r,
@@ -100,14 +100,14 @@ const circle = (entity: { x: number; r: number; y: number; transforms: any[] }) 
  * DXF entity (<ellipse /> if start and end point are the same).
  */
 const ellipseOrArc = (
-  cx: number,
-  cy: number,
-  majorX: number,
-  majorY: number,
-  axisRatio: number,
-  startAngle: number,
-  endAngle: number,
-  flipX: boolean,
+  cx,
+  cy,
+  majorX,
+  majorY,
+  axisRatio,
+  startAngle,
+  endAngle,
+  flipX,
 ) => {
   const rx = Math.sqrt(majorX * majorX + majorY * majorY)
   const ry = axisRatio * rx
@@ -174,13 +174,13 @@ const ellipseOrArc = (
  * Compute the bounding box of an elliptical arc, given the DXF entity parameters
  */
 const bboxEllipseOrArc = (
-  cx: number,
-  cy: number,
-  majorX: number,
-  majorY: number,
-  axisRatio: number,
-  startAngle: number,
-  endAngle: number,
+  cx,
+  cy,
+  majorX,
+  majorY,
+  axisRatio,
+  startAngle,
+  endAngle,
   _flipX,
 ) => {
   // The bounding box will be defined by the starting point of the ellipse, and ending point,
@@ -193,7 +193,7 @@ const bboxEllipseOrArc = (
   while (endAngle <= startAngle) endAngle += Math.PI * 2
 
   // When rotated, the extrema of the ellipse will be found at these angles
-  const angles: (number | any)[] = []
+  const angles = []
 
   if (Math.abs(majorX) < 1e-12 || Math.abs(majorY) < 1e-12) {
     // Special case for majorX or majorY = 0
@@ -251,7 +251,7 @@ const bboxEllipseOrArc = (
  * An ELLIPSE is defined by the major axis, convert to X and Y radius with
  * a rotation angle
  */
-const ellipse = (entity: { x: any; y: any; majorX: any; majorY: any; axisRatio: any; startAngle: any; endAngle: any; transforms: any[] }) => {
+const ellipse = (entity) => {
   const { bbox: bbox0, element: element0 } = ellipseOrArc(
     entity.x,
     entity.y,
@@ -271,7 +271,7 @@ const ellipse = (entity: { x: any; y: any; majorX: any; majorY: any; axisRatio: 
 /**
  * An ARC is an ellipse with equal radii
  */
-const arc = (entity: { x: any; y: any; r: any; startAngle: any; endAngle: any; extrusionZ: number; transforms: any[] }) => {
+const arc = (entity) => {
   const { bbox: bbox0, element: element0 } = ellipseOrArc(
     entity.x,
     entity.y,
@@ -289,8 +289,8 @@ const arc = (entity: { x: any; y: any; r: any; startAngle: any; endAngle: any; e
   return transformBoundingBoxAndElement(bbox, element, entity.transforms)
 }
 
-export const piecewiseToPaths = (k: number, knots: string | any[], controlPoints: string | any[]) => {
-  const paths: string[] = []
+export const piecewiseToPaths = (k, knots, controlPoints) => {
+  const paths = []
   let controlPointIndex = 0
   let knotIndex = k
   while (knotIndex < knots.length - k + 1) {
@@ -311,7 +311,7 @@ export const piecewiseToPaths = (k: number, knots: string | any[], controlPoints
   return paths
 }
 
-const bezier = (entity: { controlPoints: any[]; degree: number; knots: any; transforms: any[] }) => {
+const bezier = (entity) => {
   let bbox = new Box2()
   entity.controlPoints.forEach((p) => {
     bbox = bbox.expandByPoint(p)
@@ -327,7 +327,7 @@ const bezier = (entity: { controlPoints: any[]; degree: number; knots: any; tran
  * Switcth the appropriate function on entity type. CIRCLE, ARC and ELLIPSE
  * produce native SVG elements, the rest produce interpolated polylines.
  */
-const entityToBoundsAndElement = (entity: { type: any; weights: any[]; degree: number }) => {
+const entityToBoundsAndElement = (entity) => {
   switch (entity.type) {
     case 'CIRCLE':
       return circle(entity)
@@ -336,7 +336,7 @@ const entityToBoundsAndElement = (entity: { type: any; weights: any[]; degree: n
     case 'ARC':
       return arc(entity)
     case 'SPLINE': {
-      const hasWeights = entity.weights && entity.weights.some((w: number) => w !== 1)
+      const hasWeights = entity.weights && entity.weights.some((w) => w !== 1)
       if ((entity.degree === 2 || entity.degree === 3) && !hasWeights) {
         try {
           return bezier(entity)
@@ -360,7 +360,7 @@ const entityToBoundsAndElement = (entity: { type: any; weights: any[]; degree: n
   }
 }
 
-export default (parsed: { tables?: any; blocks?: any[]; entities?: any }) => {
+export default (parsed) => {
   const entities = denormalise(parsed)
   const { bbox, elements } = entities.reduce(
     (acc, entity, _i) => {
