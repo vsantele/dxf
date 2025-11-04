@@ -1,0 +1,10 @@
+{
+  "include": ["src/**/*.ts"],
+  "package": "./package.json",
+  "fixes": {
+    "incompleteTypes": true,
+    "missingProperties": true,
+    "noImplicitAny": true,
+    "noImplicitThis": true
+  }
+}
