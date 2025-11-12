@@ -25,6 +25,17 @@ export const process = (tuples) => {
         case 39:
           entity.thickness = value
           break
+        case 43: // constant width (optional; default = 0).
+          entity.constantWidth = value
+          break
+        case 40:
+          // Starting width (optional; default = 0).
+          entity.startingWidth = value
+          break
+        case 41:
+          // Ending width (optional; default = 0).
+          entity.endingWidth = value
+          break
         case 42:
           // Bulge (multiple entries; one entry for each vertex)  (optional; default = 0).
           vertex.bulge = value
